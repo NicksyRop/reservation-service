@@ -13,8 +13,8 @@ public class Reservation {
 
     public  LocalDate endDate;
 
-    public boolean isReserved(LocalDate startDay, LocalDate endDay) {
-        return (!(this.endDate.isBefore(startDay) ||
-                this.startDate.isAfter(endDay)));
+    public boolean isReserved(LocalDate startDate, LocalDate endDate) {
+        return (!(this.endDate.isBefore(startDate) ||
+                this.startDate.isAfter(endDate)));
     }
 }

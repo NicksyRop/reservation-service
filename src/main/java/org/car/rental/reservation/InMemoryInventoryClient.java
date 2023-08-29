@@ -1,7 +1,10 @@
 package org.car.rental.reservation;
 
+import jakarta.inject.Singleton;
+
 import java.util.List;
 
+@Singleton
 public class InMemoryInventoryClient implements InventoryClient{
 
     private  static final List<Car> ALL_CARS = List.of(
