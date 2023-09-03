@@ -15,4 +15,8 @@ public class Car {
         this.manufacturer = manufacturer;
         this.model = model;
     }
+
+    public Car(){
+        
+    }
 }

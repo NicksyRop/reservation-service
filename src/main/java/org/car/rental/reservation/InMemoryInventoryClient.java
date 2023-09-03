@@ -13,6 +13,7 @@ public class InMemoryInventoryClient implements InventoryClient{
             new Car(3L,"KCX-232","Lexus" ,"Tetius"),
             new Car(4L,"KAC-232","Toyota" ,"Probox")
     );
+    
     @Override
     public List<Car> allCars() {
         return ALL_CARS;

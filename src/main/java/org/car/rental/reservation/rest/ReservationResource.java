@@ -8,12 +8,17 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 import org.car.rental.RentalClient;
+import org.car.rental.gaphql.GraphQLInventoryClient;
+import org.car.rental.gaphql.GraphQlClient;
 import org.car.rental.reservation.Car;
 import org.car.rental.reservation.InMemoryReservationsRepository;
 import org.car.rental.reservation.InventoryClient;
 import org.car.rental.reservation.Reservation;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.RestQuery;
+
+import io.quarkus.smallrye.graphql.client.runtime.GraphQLClientConfig;
+import io.smallrye.graphql.client.GraphQLClient;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -25,16 +30,19 @@ import java.util.Map;
 @Produces(MediaType.APPLICATION_JSON)
 public class ReservationResource {
 
-    private final InventoryClient inventoryClient;
+   // private final InventoryClient inventoryClient;
 
     private final InMemoryReservationsRepository inMemoryReservationsRepository;
 
     private final RentalClient rentalClient;
 
-    public ReservationResource(InventoryClient inventoryClient, InMemoryReservationsRepository inMemoryReservationsRepository ,@RestClient RentalClient rentalClient) {
+    private final GraphQLInventoryClient inventoryClient;
+
+    public ReservationResource( @GraphQLClient("inventory") GraphQLInventoryClient inventoryClient , InMemoryReservationsRepository inMemoryReservationsRepository ,@RestClient RentalClient rentalClient) {
         this.inventoryClient = inventoryClient;
         this.inMemoryReservationsRepository = inMemoryReservationsRepository;
         this.rentalClient = rentalClient;
+    
     }
 
     @GET
